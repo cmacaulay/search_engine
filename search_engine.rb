@@ -1,9 +1,3 @@
-# documents, are strings
-# index the document - give the document an idea
-# search a given word and the result is the IDs where the word appears
-# Create a data structure: index, accepts a string and the ID
-# String is the body of the document, ID identifies the document
-# SEARCH - provide a word, another string, get returned all of the ids where that word appears
 require 'benchmark'
 
 class SearchEngine
@@ -14,9 +8,6 @@ class SearchEngine
   end
 
   def add(document, id)
-    # Hash, take the ID and store that as the key
-    # Take the document and store that as the value
-    # doesn't return anything
     @index[id] = document
   end
 
@@ -28,9 +19,6 @@ class SearchEngine
       end
     end
     result
-    # Iterate over that hash structure, look at both the key and the value
-    # search the value (document), for the word
-    # Returns an array of the ids
   end
 
   def add_inverse_index(document, id)
