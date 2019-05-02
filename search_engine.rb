@@ -7,21 +7,24 @@ class SearchEngine
     @index = {}
   end
 
+  # initial front index implementation, with small code cleanup
   def add(document, id)
+    # index by ID
     @index[id] = document
   end
 
   def search(word)
     result = []
     @index.each do |id, value|
-      if value.include?(word)
-        result << id
-      end
+        result << id if value.include?(word)
     end
     result
   end
 
+  # inverse_index implementation with the same functionality, but more performant
+  # as demonstrated by Benchmark
   def add_inverse_index(document, id)
+    # index by words in document
     document.split(" ").each do |word|
       word = word.downcase
       if !@index[word]
